@@ -26,7 +26,13 @@ namespace FCFLUC001.Controllers {
 			return View();
 		}
 		public ActionResult RicercaProdotti(string codice , string descrizione){
-			//Luca E Carmen , tocca a voi!
+			int cod ;
+			DomainModels dm = new DomainModels();
+			if(int.TryParse(codice,out cod)){
+				ViewBag.prodotto = dm.RicercaId(cod);
+				return View("DettagliOProdotto");
+			}
+
 			return View();
 		}
 		
