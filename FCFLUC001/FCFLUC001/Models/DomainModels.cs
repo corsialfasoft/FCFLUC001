@@ -51,7 +51,15 @@ namespace FCFLUC001.Models {
 		}
 
 		public void AggiungiOrdine(List<Prodotto> listP) {
-			throw new NotImplementedException();
+			foreach(Prodotto p in listP){ 
+				using (var db = new RICHIESTEEntities()) {
+					var query = new ProdottiSet{
+						descrizione = p.Descrizione,
+						quantita = p.Quantita
+					};
+					db.SaveChanges();
+				}
+			}
 		}
 
 	}
