@@ -18,12 +18,36 @@ namespace FCFLUC001.Models {
 	}
 
 	public class DomainModels: IRichieste {
+		RICHIESTEEntities db;
 		public Prodotto RicercaId(int id){
-			throw new NotImplementedException();
+			
+			Prodotto prod = new Prodotto();
+
+			using (var db = new RICHIESTEEntities()){
+				ProdottiSet pSet = new ProdottiSet();
+				pSet = db.ProdottiSet.Find(id);
+				prod.ID = pSet.Id;
+				prod.Descrizione = pSet.descrizione;
+				prod.Quantita = pSet.quantita;
+			}
+			return prod;
 		}
 
 		public List<Prodotto> RicercaDescrizione(string descrizione) {
-			throw new NotImplementedException();
+			List<Prodotto> listProd = new List<Prodotto>();
+			using(var db = new RICHIESTEEntities()){				
+				var query= from c in db.ProdottiSet
+							where c.descrizione.Contains(descrizione)
+							select c;
+				foreach(var h in query){
+					Prodotto p = new Prodotto();
+					p.ID = h.Id;
+					p.Descrizione = h.descrizione;
+					p.Quantita = h.quantita;
+					listProd.Add(p);
+				}				
+			}
+			return listProd;
 		}
 
 		public void AggiungiOrdine(List<Prodotto> listP) {

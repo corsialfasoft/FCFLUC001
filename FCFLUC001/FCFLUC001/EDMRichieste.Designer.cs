@@ -1,4 +1,4 @@
-﻿// Generazione del codice predefinita abilitata per il modello 'C:\Users\CORSO02\source\repos\FCFLUC001\FCFLUC001\FCFLUC001\EDMRichieste.edmx'. 
+﻿// Generazione del codice predefinita abilitata per il modello 'C:\Users\Luke\workspace\FCFL Uc001\FCFLUC001\FCFLUC001\FCFLUC001\EDMRichieste.edmx'. 
 // Per abilitare la generazione del codice legacy, modificare il valore della proprietà della finestra di progettazione 'Strategia di generazione del codice
 // su 'Legacy ObjectContext'. Questa proprietà è disponibile nella finestra Proprietà quando il modello è
 // aperto nella finestra di progettazione.

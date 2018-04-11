@@ -4,70 +4,69 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RICHIESTEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ProdottiSet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="descrizione" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="quantita" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RichiesteProdotti">
-          <Key>
-            <PropertyRef Name="Richieste_Id" />
-            <PropertyRef Name="Prodotti_Id" />
-          </Key>
-          <Property Name="Richieste_Id" Type="int" Nullable="false" />
-          <Property Name="Prodotti_Id" Type="int" Nullable="false" />
-          <Property Name="quantita" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RichiesteSet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="data" Type="datetime" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_RichiesteProdotti_Prodotti">
-          <End Role="ProdottiSet" Type="Self.ProdottiSet" Multiplicity="1" />
-          <End Role="RichiesteProdotti" Type="Self.RichiesteProdotti" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProdottiSet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RichiesteProdotti">
-              <PropertyRef Name="Prodotti_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RichiesteProdotti_Richieste">
-          <End Role="RichiesteSet" Type="Self.RichiesteSet" Multiplicity="1" />
-          <End Role="RichiesteProdotti" Type="Self.RichiesteProdotti" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RichiesteSet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RichiesteProdotti">
-              <PropertyRef Name="Richieste_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="RICHIESTEModelStoreContainer">
-          <EntitySet Name="ProdottiSet" EntityType="Self.ProdottiSet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RichiesteProdotti" EntityType="Self.RichiesteProdotti" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RichiesteSet" EntityType="Self.RichiesteSet" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_RichiesteProdotti_Prodotti" Association="Self.FK_RichiesteProdotti_Prodotti">
-            <End Role="ProdottiSet" EntitySet="ProdottiSet" />
-            <End Role="RichiesteProdotti" EntitySet="RichiesteProdotti" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RichiesteProdotti_Richieste" Association="Self.FK_RichiesteProdotti_Richieste">
-            <End Role="RichiesteSet" EntitySet="RichiesteSet" />
-            <End Role="RichiesteProdotti" EntitySet="RichiesteProdotti" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="RICHIESTEModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="RICHIESTEModelStoreContainer">
+    <EntitySet Name="ProdottiSet" EntityType="RICHIESTEModel.Store.ProdottiSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RichiesteProdotti" EntityType="RICHIESTEModel.Store.RichiesteProdotti" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RichiesteSet" EntityType="RICHIESTEModel.Store.RichiesteSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_RichiesteProdotti_Prodotti" Association="RICHIESTEModel.Store.FK_RichiesteProdotti_Prodotti">
+      <End Role="ProdottiSet" EntitySet="ProdottiSet" />
+      <End Role="RichiesteProdotti" EntitySet="RichiesteProdotti" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RichiesteProdotti_Richieste" Association="RICHIESTEModel.Store.FK_RichiesteProdotti_Richieste">
+      <End Role="RichiesteSet" EntitySet="RichiesteSet" />
+      <End Role="RichiesteProdotti" EntitySet="RichiesteProdotti" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ProdottiSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descrizione" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="quantita" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RichiesteProdotti">
+    <Key>
+      <PropertyRef Name="Richieste_Id" />
+      <PropertyRef Name="Prodotti_Id" />
+    </Key>
+    <Property Name="Richieste_Id" Type="int" Nullable="false" />
+    <Property Name="Prodotti_Id" Type="int" Nullable="false" />
+    <Property Name="quantita" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RichiesteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="data" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_RichiesteProdotti_Prodotti">
+    <End Role="ProdottiSet" Type="RICHIESTEModel.Store.ProdottiSet" Multiplicity="1" />
+    <End Role="RichiesteProdotti" Type="RICHIESTEModel.Store.RichiesteProdotti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProdottiSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RichiesteProdotti">
+        <PropertyRef Name="Prodotti_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RichiesteProdotti_Richieste">
+    <End Role="RichiesteSet" Type="RICHIESTEModel.Store.RichiesteSet" Multiplicity="1" />
+    <End Role="RichiesteProdotti" Type="RICHIESTEModel.Store.RichiesteProdotti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RichiesteSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RichiesteProdotti">
+        <PropertyRef Name="Richieste_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RICHIESTEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -140,37 +139,36 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RICHIESTEModelStoreContainer" CdmEntityContainer="RICHIESTEEntities">
-          <EntitySetMapping Name="ProdottiSet">
-            <EntityTypeMapping TypeName="RICHIESTEModel.ProdottiSet">
-              <MappingFragment StoreEntitySet="ProdottiSet">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="descrizione" ColumnName="descrizione" />
-                <ScalarProperty Name="quantita" ColumnName="quantita" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RichiesteProdotti">
-            <EntityTypeMapping TypeName="RICHIESTEModel.RichiesteProdotti">
-              <MappingFragment StoreEntitySet="RichiesteProdotti">
-                <ScalarProperty Name="Richieste_Id" ColumnName="Richieste_Id" />
-                <ScalarProperty Name="Prodotti_Id" ColumnName="Prodotti_Id" />
-                <ScalarProperty Name="quantita" ColumnName="quantita" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RichiesteSet">
-            <EntityTypeMapping TypeName="RICHIESTEModel.RichiesteSet">
-              <MappingFragment StoreEntitySet="RichiesteSet">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="data" ColumnName="data" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RICHIESTEModelStoreContainer" CdmEntityContainer="RICHIESTEEntities">
+    <EntitySetMapping Name="ProdottiSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RICHIESTEModel.ProdottiSet)">
+        <MappingFragment StoreEntitySet="ProdottiSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="descrizione" ColumnName="descrizione" />
+          <ScalarProperty Name="quantita" ColumnName="quantita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RichiesteProdotti">
+      <EntityTypeMapping TypeName="IsTypeOf(RICHIESTEModel.RichiesteProdotti)">
+        <MappingFragment StoreEntitySet="RichiesteProdotti">
+          <ScalarProperty Name="Richieste_Id" ColumnName="Richieste_Id" />
+          <ScalarProperty Name="Prodotti_Id" ColumnName="Prodotti_Id" />
+          <ScalarProperty Name="quantita" ColumnName="quantita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RichiesteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RICHIESTEModel.RichiesteSet)">
+        <MappingFragment StoreEntitySet="RichiesteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="data" ColumnName="data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -184,7 +182,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
       </DesignerInfoPropertySet>
     </Options>

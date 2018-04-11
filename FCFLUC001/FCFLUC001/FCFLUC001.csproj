@@ -189,6 +189,7 @@
       <LastGenOutput>EDMRichieste.Context.cs</LastGenOutput>
       <DependentUpon>EDMRichieste.edmx</DependentUpon>
     </Content>
+    <Content Include="EDMRichieste.edmx.sql" />
     <Content Include="EDMRichieste.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EDMRichieste.edmx</DependentUpon>
@@ -238,7 +239,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
